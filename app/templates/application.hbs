@@ -1,7 +1,49 @@
-{{page-title "Emberintro"}}
+{{page-title "CSCI 5117 Flashcards"}}
+{{!-- Bulma CSS --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
 
-{{outlet}}
+{{!-- Font Awesome --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
 
-{{! The following component displays Ember's default welcome message. }}
-<WelcomePage />
-{{! Feel free to remove this! }}
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+
+        <div class="navbar-item">
+            <i class="fa-solid fa-paperclip"> CSCI 5117 Flashcards</i>
+        </div>
+
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <LinkTo @route="home" class="navbar-item" role="button">Home (About)</LinkTo>
+
+            <LinkTo @route="flashcards" class="navbar-item" role="button">Flashcards</LinkTo>
+        </div>
+
+        <div class="navbar-end">
+            {{!-- <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                        Log in
+                    </a>
+                </div>
+            </div> --}}
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    {{outlet}}
+</div>

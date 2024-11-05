@@ -1,0 +1,11 @@
+{{page-title "Flashcards"}}
+
+<h1 class="title">Flashcards</h1>
+
+    <div class="columns is-vcentered is-multiline is-centered">
+        {{#each @model as |card|}}
+        <div class="column is-one-quarter">
+            <Card @question={{card.question}} @answer={{card.answer}} />
+        </div>
+        {{/each}}
+    </div>
