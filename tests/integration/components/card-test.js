@@ -10,17 +10,13 @@ module('Integration | Component | card', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<Card />`);
+    await render(hbs`<Card @question=question @answer=answer />
+`);
 
-    assert.dom().hasText('');
-
-    // Template block usage:
-    await render(hbs`
-      <Card>
-        template block text
-      </Card>
-    `);
-
-    assert.dom().hasText('template block text');
+    assert.dom('.card').exists();
+    assert.dom('.card .question').exists();
+    assert.dom('.card .question').hasText('question');
+    assert.dom('.card .answer').exists();
+    assert.dom('.card .answer').hasText('answer');
   });
 });
