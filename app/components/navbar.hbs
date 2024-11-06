@@ -1,0 +1,39 @@
+{{!-- Bulma Navbar --}}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+
+        <div class="navbar-item">
+            <i class="fa-solid fa-paperclip"> CSCI 5117 Flashcards</i>
+        </div>
+
+
+        <button class="navbar-burger" aria-label="menu" aria-expanded="false"
+            data-target="navMenu" type="button" {{on 'click' this.toggleBurger}}>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </button>
+    </div>
+
+    <div id="navMenu" class="navbar-menu">
+        <div class="navbar-start">
+            <LinkTo @route="home" class="navbar-item home" role="button">Home (About)</LinkTo>
+
+            <LinkTo @route="flashcards" class="navbar-item flashcards" role="button">Flashcards</LinkTo>
+        </div>
+
+        <div class="navbar-end">
+            {{!-- <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                        Log in
+                    </a>
+                </div>
+            </div> --}}
+        </div>
+    </div>
+</nav>

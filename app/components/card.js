@@ -11,5 +11,4 @@ export default class CardComponent extends Component {
     question.classList.toggle('hidden');
     answer.classList.toggle('hidden');
   }
-  
 }
