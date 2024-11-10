@@ -10,7 +10,7 @@ module('Integration | Component | card', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<Card @question=question @answer=answer />
+    await render(hbs`<Card @question="question" @answer="answer" />
 `);
 
     assert.dom('.card').exists();
