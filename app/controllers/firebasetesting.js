@@ -22,6 +22,5 @@ export default class FirebasetestingController extends Controller {
             signOut(auth);
             console.log("Signed Out");
         }
-
     }
 }
