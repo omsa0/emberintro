@@ -9,4 +9,5 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('flashcards');
   this.route('home');
+  this.route('firebasetesting');
 });
