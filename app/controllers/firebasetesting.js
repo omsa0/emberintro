@@ -13,12 +13,12 @@ export default class FirebasetestingController extends Controller {
       // Sign In
       this.auth.sign_in_with_popup();
       console.log(this.auth.user);
-      console.log("Signed In");
+      console.log('Signed In');
     } else {
       // Sign Out
       this.auth.sign_out();
       console.log(this.auth.user);
-      console.log("Signed Out");
+      console.log('Signed Out');
     }
   }
 }
