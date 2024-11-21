@@ -30,7 +30,7 @@ export default class AuthService extends Service {
   async requireLogin() {
     await this.ensureInitialized();
     if (!this.user) {
-      this.router.transitionTo('index');
+      this.router.transitionTo('home');
     }
   }
 
@@ -61,6 +61,6 @@ export default class AuthService extends Service {
     console.log(this.auth.currentUser);
     signOut(this.auth);
     // a bit foreceful, but it'll do.
-    this.router.transitionTo('index');
+    this.router.transitionTo('home');
   }
 }
