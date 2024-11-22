@@ -1,11 +1,18 @@
 {{page-title "Flashcards"}}
 
 <h1 class="title">Flashcards</h1>
+<h2 class="subtitle">Click on a card to see the answer</h2>
 
-    <div class="columns is-vcentered is-multiline is-centered">
-        {{#each @model as |card|}}
-        <div class="column is-one-quarter">
-            <Card @question={{card.question}} @answer={{card.answer}} />
-        </div>
-        {{/each}}
+{{#if this.auth.user}}
+    <AddCard/>
+{{else}}
+    <p>You must be logged in to add a card.</p>
+{{/if}}
+
+<div class="columns is-vcentered is-multiline is-centered">
+    {{#each this.cards.data as |card|}}
+    <div class="column is-one-quarter">
+        <Card @question={{card.question}} @answer={{card.answer}} />
     </div>
+    {{/each}}
+</div>

@@ -1,1 +1,18 @@
-{{yield}}
+<button 
+    class="button is-primary" 
+    type="button"
+    {{on 'click' (fn this.cards.newCard this.question this.answer)}}>
+    Add Card
+</button>
+<Input 
+    @value={{this.question}} 
+    class="input is-inline" 
+    @type="text" 
+    placeholder="Question"
+/>
+<Input 
+    @value={{this.answer}} 
+    class="input is-inline" 
+    @type="text" 
+    placeholder="Answer"
+/>
