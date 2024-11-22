@@ -1,7 +1,10 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { service } from '@ember/service';
 
 export default class NavbarComponent extends Component {
+  @service auth;
+
   // Navbar Script for Burger Menu
   @action
   toggleBurger(event) {

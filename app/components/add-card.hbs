@@ -1,7 +1,7 @@
 <button 
     class="button is-primary" 
     type="button"
-    {{on 'click' (fn this.cards.newCard this.question this.answer)}}>
+    {{on 'click' this.addCard}}>
     Add Card
 </button>
 <Input 

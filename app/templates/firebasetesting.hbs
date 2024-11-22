@@ -2,3 +2,5 @@
 
 <h1 class="title">Hi, {{ this.auth.user.displayName }} </h1>
 <button class="button is-primary" type="button" {{on 'click' this.test}}>test</button>
+<h1 class="title">auth info</h1>
+<img src={{this.auth.user.photoURL}} alt="user photo">

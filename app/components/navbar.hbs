@@ -24,16 +24,22 @@
         </div>
 
         <div class="navbar-end">
-            {{!-- <div class="navbar-item">
+            <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-primary">
-                        <strong>Sign up</strong>
-                    </a>
-                    <a class="button is-light">
-                        Log in
-                    </a>
+                    {{#if this.auth.user}}
+                        <p>Welcome, {{this.auth.user.displayName}}</p>
+                        <img src={{this.auth.user.photoURL}} alt="user photo">
+                        <a class="button is-light" {{on 'click' this.auth.sign_out}}>
+                            Log out
+                        </a>
+                    {{else}}
+                        <a class="button is-light" {{on 'click' this.auth.sign_in_with_popup}}>
+                            Log in
+                        </a>
+                    {{/if}}
                 </div>
-            </div> --}}
+            </div>
+            
         </div>
     </div>
 </nav>

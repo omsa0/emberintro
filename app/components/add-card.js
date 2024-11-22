@@ -8,4 +8,14 @@ export default class AddCard extends Component {
 
     @tracked question = '';
     @tracked answer = '';
+
+    @action
+    async addCard(event) {
+        event.preventDefault();
+
+        await this.cards.newCard(this.question, this.answer);
+
+        this.question = '';
+        this.answer = '';
+    }
 }
