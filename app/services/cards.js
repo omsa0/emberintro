@@ -2,7 +2,7 @@ import Service from '@ember/service';
 import { service } from '@ember/service';
 import { action, computed } from '@ember/object';
 import { getDocs, getFirestore } from 'firebase/firestore';
-import { collection, doc, addDoc } from 'firebase/firestore';
+import { collection, doc, addDoc, onSnapshot } from 'firebase/firestore';
 import { tracked } from '@glimmer/tracking';
 
 export default class CardsService extends Service {
@@ -10,6 +10,8 @@ export default class CardsService extends Service {
   @service auth;
 
   @tracked data = [];
+
+  unsubscribe = null;
 
   db = getFirestore(this.firebase.app);
   cardsRef = collection(this.db, 'cards');
@@ -34,16 +36,16 @@ export default class CardsService extends Service {
       answer: answer,
     });
 
-    const newItem = {
-      id: id,
-      owner: this.auth.user.uid,
-      question: question,
-      answer: answer,
-    };
+    // const newItem = {
+    //   id: id,
+    //   owner: this.auth.user.uid,
+    //   question: question,
+    //   answer: answer,
+    // };
 
     // turns out ember does not observe changes to arrays
     // so we need to reassign the array to trigger a re-render
-    this.data = [...this.data, newItem];
+    // this.data = [...this.data, newItem];
   }
 
   // only to fetch the cards on initial load
@@ -51,12 +53,24 @@ export default class CardsService extends Service {
   // to fetch again
   @action
   async fetchCards() {
-    const snapshot = await getDocs(this.cardsRef);
-    this.data = [];
-    snapshot.forEach((doc) => {
-      const dat = doc.data();
-      dat['id'] = doc.id;
-      this.data.push(dat);
+    // const querySnapshot = await getDocs(this.cardsRef);
+    // this.data = [];
+    // querySnapshot.forEach((doc) => {
+    //   const dat = doc.data();
+    //   dat['id'] = doc.id;
+    //   this.data.push(dat);
+    // });
+
+    this.unsubscribe = onSnapshot(this.cardsRef, (querySnapshot) => {
+      // for lists, each "change" has a bunch of data elements in it.
+      // loop over them and pull the data out.
+      this.data = [];
+      querySnapshot.forEach((doc) => {
+        const dat = doc.data();
+        dat['id'] = doc.id;
+        this.data.push(dat);
+      });
+      console.log(this.data);
     });
   }
 }
