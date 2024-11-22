@@ -54,9 +54,9 @@ export default class CardsService extends Service {
     const snapshot = await getDocs(this.cardsRef);
     this.data = [];
     snapshot.forEach((doc) => {
-        const dat = doc.data();
-        dat['id'] = doc.id;
-        this.data.push(dat);
-      });
+      const dat = doc.data();
+      dat['id'] = doc.id;
+      this.data.push(dat);
+    });
   }
 }

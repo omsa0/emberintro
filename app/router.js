@@ -10,4 +10,7 @@ Router.map(function () {
   this.route('flashcards');
   this.route('home');
   this.route('firebasetesting');
+  this.route('not_found', {
+    path: '/*path',
+  });
 });
